@@ -38,26 +38,9 @@ function updateClubInfo() {
     }
 }
 
-// Venmo Integration
+// Update club info when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Update club info when DOM is loaded
     updateClubInfo();
-    // Replace with your actual Venmo username or payment link
-    const venmoUsername = 'your-venmo-username';
-    const venmoAmount = '10.00';
-    const venmoNote = 'Club Donation';
-    
-    // Create Venmo payment URL
-    const venmoUrl = `https://venmo.com/${venmoUsername}?txn=pay&amount=${venmoAmount}&note=${encodeURIComponent(venmoNote)}`;
-    
-    // Add click handler to Venmo button
-    const venmoButton = document.getElementById('venmoButton');
-    if (venmoButton) {
-        venmoButton.addEventListener('click', function() {
-            window.open(venmoUrl, '_blank');
-        });
-    }
-
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
