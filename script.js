@@ -1,5 +1,47 @@
+// Club Configuration
+const CLUB_CONFIG = {
+    name: "MCHS Robotics",
+    email: "robotics@mchs.edu",
+    phone: "(123) 456-7890",
+    currentYear: new Date().getFullYear()
+};
+
+// Function to update all instances of the club info in the DOM
+function updateClubInfo() {
+    // Update all elements with the club name
+    document.title = document.title.replace('MCHS Robotics', CLUB_CONFIG.name);
+    
+    // Update logo and other elements with the club name
+    const clubNameElements = document.querySelectorAll('.logo, footer p');
+    clubNameElements.forEach(element => {
+        element.textContent = element.textContent.replace('MCHS Robotics', CLUB_CONFIG.name);
+    });
+    
+    // Update copyright year
+    const copyrightElement = document.querySelector('footer p');
+    if (copyrightElement) {
+        copyrightElement.textContent = copyrightElement.textContent
+            .replace('2025', CLUB_CONFIG.currentYear);
+    }
+    
+    // Update contact information
+    const emailElement = document.querySelector('.contact-info p:first-child');
+    if (emailElement) {
+        emailElement.textContent = emailElement.textContent
+            .replace('email@clubname.com', CLUB_CONFIG.email);
+    }
+    
+    const phoneElement = document.querySelector('.contact-info p:nth-child(2)');
+    if (phoneElement) {
+        phoneElement.textContent = phoneElement.textContent
+            .replace('(123) 456-7890', CLUB_CONFIG.phone);
+    }
+}
+
 // Venmo Integration
 document.addEventListener('DOMContentLoaded', function() {
+    // Update club info when DOM is loaded
+    updateClubInfo();
     // Replace with your actual Venmo username or payment link
     const venmoUsername = 'your-venmo-username';
     const venmoAmount = '10.00';
