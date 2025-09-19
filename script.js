@@ -1,7 +1,7 @@
 // Club Configuration
 const CLUB_CONFIG = {
     name: "MCHS Robotics",
-    email: "ajstockert.707@gmail.com",
+    email: "Dud",
     phone: "(123) 456-7890",
     currentYear: new Date().getFullYear()
 };
