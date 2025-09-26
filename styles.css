@@ -1,12 +1,36 @@
 /* Global Styles */
 :root {
+    /* Light theme (default) */
     --primary-color: #4a6fa5;
+    --primary-light: #6d8fc7;
     --secondary-color: #2c3e50;
     --accent-color: #e74c3c;
     --light-color: #ecf0f1;
     --dark-color: #2c3e50;
-    --text-color: #333;
-    --text-light: #777;
+    --bg-color: #f9f9f9;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --text-light: #777777;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --timeline-bg: #f8f9fa;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #6d8fc7;
+        --primary-light: #8fabdb;
+        --secondary-color: #3a4f6b;
+        --accent-color: #ff6b6b;
+        --light-color: #3a4f6b;
+        --dark-color: #e0e0e0;
+        --bg-color: #1a1a2e;
+        --card-bg: #16213e;
+        --text-color: #e0e0e0;
+        --text-light: #b0b0b0;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        --timeline-bg: #0f3460;
+    }
 }
 
 * {
@@ -19,7 +43,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: #f9f9f9;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -34,11 +59,12 @@ a:hover {
 
 /* Header & Navigation */
 header {
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 5px var(--shadow-color);
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 nav {
@@ -66,15 +92,16 @@ nav ul li {
 }
 
 nav ul li a {
-    color: var(--dark-color);
+    color: var(--text-color);
     font-weight: 500;
     padding: 0.5rem 0;
     position: relative;
+    transition: color 0.3s ease;
 }
 
 nav ul li a.active,
 nav ul li a:hover {
-    color: var(--primary-color);
+    color: var(--primary-light);
 }
 
 nav ul li a::after {
@@ -82,7 +109,7 @@ nav ul li a::after {
     position: absolute;
     width: 0;
     height: 2px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-light);
     bottom: 0;
     left: 0;
     transition: width 0.3s ease;
@@ -185,11 +212,12 @@ h2::after {
 
 /* Year Plan Timeline */
 .year-plan {
-    background-color: #f8f9fa;
+    background-color: var(--timeline-bg);
     padding: 2rem 5%;
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
+    transition: background-color 0.3s ease;
 }
 
 .timeline {
@@ -238,13 +266,14 @@ h2::after {
 }
 
 .timeline-content {
-    background: white;
+    background: var(--card-bg);
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px var(--shadow-color);
     margin: 10px 0;
     position: relative;
     z-index: 2;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .timeline-content ul {
@@ -261,11 +290,12 @@ h2::after {
 
 .timeline-content li::before {
     content: '•';
-    color: var(--primary-color);
+    color: var(--primary-light);
     font-size: 1.5rem;
     position: absolute;
     left: 0;
     top: -5px;
+    transition: color 0.3s ease;
 }
 
 @media (min-width: 768px) {
@@ -328,11 +358,12 @@ h2::after {
 }
 
 .event-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    color: var(--text-color);
 }
 
 .event-card:hover {
@@ -360,11 +391,12 @@ h2::after {
 
 /* About Page Styles */
 .about-section {
-    background: white;
+    background: var(--card-bg);
     border-radius: 8px;
     padding: 3rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px var(--shadow-color);
     margin-bottom: 3rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-section h1 {
@@ -410,9 +442,10 @@ h2::after {
 .team-member {
     text-align: center;
     padding: 1.5rem;
-    background: #f8f9fa;
+    background: var(--card-bg);
     border-radius: 8px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 .team-member:hover {
@@ -532,16 +565,16 @@ h2::after {
 /* Footer */
 footer {
     background-color: var(--secondary-color);
-    color: white;
+    color: var(--light-color);
     text-align: center;
-    padding: 1.5rem;
+    padding: 2rem 0;
     margin-top: 3rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 footer p {
     margin: 0;
     font-size: 0.9rem;
-    opacity: 0.8;
 }
 
 /* Responsive Design */
