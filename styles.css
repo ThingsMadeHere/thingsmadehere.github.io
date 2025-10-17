@@ -350,7 +350,7 @@ h2::after {
         left: 50%;
         width: 100px;
         height: 100px;
-        margin: -50px 0 0 -50px;
+        margin: -100px 0 0 -50px;  /* Increased from -70px to -100px to move the circle up more */
         top: 0;
         font-size: 1.5rem;
     }
